@@ -1,6 +1,6 @@
 <h1>Test de Neo4j sur Heroku !</h1>
 
-<h3>Interface gestion basique</h3>
+<h3><u>Interface gestion basique</u></h3>
 
 <!-- SUPRESSION -->
 <form method="post" action="/db/delete">
@@ -21,8 +21,10 @@
 <br><br>
 <h3><u>Liste noeuds type "Person"</u></h3>
 
-<ul>
-<% persons.forEach(function(person) { %>
-    <li><%= person.name %></li>
+<table>
+		<% persons.forEach(function(person) { %>
+		<tr>
+	    	<td><%= person.name %> </td>
+	    </tr>
 <% }); %>
-</ul>
+</table>
