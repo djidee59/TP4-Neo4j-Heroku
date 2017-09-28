@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 var app = express();
 
 // NEO4J
-var neo4j = require('neo4j-driver').v1;
+var neo4j = require('neo4j');
 var db = new neo4j.GraphDatabase(process.env['GRAPHENEDB_URL']);
 
 // TEST NEO4J
