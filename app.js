@@ -6,23 +6,27 @@ const PORT = process.env.PORT || 3000;
 var app = express();
 
 // NEO4J
-var neo4j = require('neo4j');
-var db = new neo4j.GraphDatabase(process.env['GRAPHENEDB_URL']);
+var neo4j = require('neo4j-driver').v1;
+var graphenedbURL = process.env.GRAPHENEDB_BOLT_URL;
+var graphenedbUser = process.env.GRAPHENEDB_BOLT_USER;
+var graphenedbPass = process.env.GRAPHENEDB_BOLT_PASSWORD;
+var driver = neo4j.driver(graphenedbURL, neo4j.auth.basic(graphenedbUser, graphenedbPass));
 
 // TEST NEO4J
-db.cypher({
-    query: 'CREATE (n:Person {name: {personName}}) RETURN n',
-    params: {
-        personName: 'Julien'
-    }
-}, function(err, results){
-    var result = results[0];
-    if (err) {
-        console.error('Error saving new node to database:', err);
-    } else {
-        console.log('Node saved to database with id:', result['n']['_id']);
-    }
-});
+var session = driver.session();
+var name = "Bob";
+session
+    .run('CREATE(n:Person {name:{nameParam}})', {nameParam: name})
+    .then(function(result) {
+        result.records.forEach(function(record) {
+            console.log(record)
+        });
+
+        session.close();
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
