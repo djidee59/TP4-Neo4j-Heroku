@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 3000;
 
 var app = express();
 
+// Body parser pour récupérer facilemnt les élements du DOM
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
