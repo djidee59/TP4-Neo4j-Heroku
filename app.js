@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var bodyParser = require('body-parser');
 // heroku: on récupère le port sur lequel heroku à ouvert l'app
 const PORT = process.env.PORT || 3000;
 
