@@ -29,12 +29,12 @@ app.set('view engine', 'ejs');
 app.get('/', function(req,res){
 
 	session
-	    .run('MATCH(n:Person) RETURN n')
+	    .run('MATCH(n:Person) RETURN {n, id2 : ID(n) }')
 	    .then(function(result) {
 	    	var personArr = [];
 	        result.records.forEach(function(record) {
 	        	personArr.push({
-	        		id: record._fields[0].identity,
+	        		id: id2,
 	        		name: record._fields[0].properties.name,
 	        		age: record._fields[0].properties.age,
 	        	});
