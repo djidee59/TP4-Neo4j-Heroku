@@ -19,6 +19,7 @@ var session = driver.session();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// ROOT
 app.get('/', function(req,res){
 
 	session
@@ -39,8 +40,9 @@ app.get('/', function(req,res){
 	        console.log(error);
 	    });
 
-
 });
+
+// AJOUT PERSONNE
 
 // on lance l'écoute
 app.listen(PORT);
