@@ -43,6 +43,21 @@ app.get('/', function(req,res){
 });
 
 // AJOUT PERSONNE
+app.post('/person/add',function(req,res){
+	var nom = req.body.name;
+	var age = req.body.age;
+
+	session
+		.run('CREATE(n:Person {name:{nameParam},age:{ageParam})', {nameParam: nom,ageParam:age})
+		.then(function(result){
+			res.redirect('/');
+			session.close();
+		})
+		.catch(function(err){
+			console.log(err);
+		});
+
+});
 
 // on lance l'écoute
 app.listen(PORT);
