@@ -21,6 +21,7 @@ var session = driver.session();
 
 // dossier views et EJS pour le render
 app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 
 // ROOT
