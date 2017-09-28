@@ -50,7 +50,8 @@ app.get('/', function(req,res){
 					//id: record._fields[0].identity.low,
 					name: record._fields[0].properties.name,
 					adress: record._fields[0].properties.adress,
-				});
+					});
+				})
 
 	    		// RENDER avec personnes et batiments
 		    	res.render('index',{
@@ -68,7 +69,7 @@ app.get('/', function(req,res){
 	        console.log(error);
 	});
 
-}});
+});
 
 // AJOUT PERSONNE
 app.post('/person/add',function(req,res){
