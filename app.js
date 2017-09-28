@@ -92,7 +92,7 @@ app.post('/person/add',function(req,res){
 // SUPPRESSION PERSONNE
 app.get('/pers/del/:id', function(req, res) {
     if (req.params.id != '') {
-        var id = req.params.id;
+        var id = parseInt(req.params.id,10);
         console.log("suppression personne: " + id);
 
         session
