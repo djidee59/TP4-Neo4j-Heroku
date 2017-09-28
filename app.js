@@ -89,6 +89,25 @@ app.post('/person/add',function(req,res){
 
 });
 
+// SUPPRESSION PERSONNE
+app.get('/pers/del/:id', function(req, res) {
+    if (req.params.id != '') {
+        var id = req.params.id;
+
+        session
+        .run('MATCH (n) where id(n) = {idd:{iddPAram}} DETACH DELETE n', {iddPAram: id})
+		.then(function(result){
+			res.redirect('/');
+			session.close();
+		})
+		.catch(function(err){
+			console.log(err);
+		});
+
+    }
+    res.redirect('/todo');
+});
+
 // AJOUT lIEU
 app.post('/building/add',function(req,res){
 	var nom = req.body.nameBat;
