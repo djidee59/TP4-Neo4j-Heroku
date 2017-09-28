@@ -93,6 +93,7 @@ app.post('/person/add',function(req,res){
 app.get('/pers/del/:id', function(req, res) {
     if (req.params.id != '') {
         var id = req.params.id;
+        console.log("suppression personne: " + id);
 
         session
         .run('MATCH (n) where id(n) = {idd:{iddPAram}} DETACH DELETE n', {iddPAram: id})
