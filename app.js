@@ -64,6 +64,19 @@ app.post('/person/add',function(req,res){
 });
 
 // SUPPRESSION DB
+app.post('/db/delete',function(req,res){
+
+	session
+		.run('MATCH(n) DETACH DELETE n')
+		.then(function(result){
+			res.redirect('/');
+			session.close();
+		})
+		.catch(function(err){
+			console.log(err);
+		});
+
+});
 
 // on lance l'écoute
 app.listen(PORT);
