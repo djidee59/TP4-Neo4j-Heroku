@@ -45,8 +45,8 @@ app.get('/', function(req,res){
 
 // AJOUT PERSONNE
 app.post('/person/add',function(req,res){
-	var nom = req.body.name;
-	var age = req.body.age;
+	var nom = req.body.name2;
+	var age = req.body.age2;
 
 	session
 		.run('CREATE(n:Person {name:{nameParam},age:{ageParam})', {nameParam: nom,ageParam:age})
@@ -59,6 +59,8 @@ app.post('/person/add',function(req,res){
 		});
 
 });
+
+// SUPPRESSION DB
 
 // on lance l'écoute
 app.listen(PORT);
