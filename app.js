@@ -6,11 +6,6 @@ const PORT = process.env.PORT || 3000;
 
 var app = express();
 
-// a priori ça ne sert à rien
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false}));
-app.use(express.static(path.join(__dirname, 'public')));
 
 // INIT NEO4J
 var neo4j = require('neo4j-driver').v1;
@@ -51,8 +46,8 @@ app.get('/', function(req,res){
 
 // AJOUT PERSONNE
 app.post('/person/add',function(req,res){
-	var nom = req.body.name2;
-	var age = req.body.age2;
+	var nom = req.body.nom;
+	var age = req.body.age;
 
 	session
 		.run('CREATE(n:Person {name:{nameParam},age:{ageParam})', {nameParam: nom,ageParam:age})
