@@ -35,6 +35,7 @@ app.get('/', function(req,res){
 	        result.records.forEach(function(record) {
 	        	personArr.push({
 	        		name: record._fields[0].properties.name,
+	        		age: record._fields[0].properties.age,
 	        	});
 	        });
 
