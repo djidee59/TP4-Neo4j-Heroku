@@ -39,6 +39,7 @@
 		    <th>Name</th>
 		    <th>Age</th>
 		    <th>Job</th>
+		    <th>Suppr.</th>
   		</tr>
 		<% persons.forEach(function(person) { %>
 		<tr>
@@ -46,6 +47,7 @@
 	    	<td><%= person.name %> </td>
 	    	<td><%= person.age %> </td>
 	    	<td><%= person.job %> </td>
+	    	<td><a href="/pers/del/<%= person.id %>">✘</a></td>
 	    </tr>
 <% }); %>
 </table>
