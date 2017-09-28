@@ -21,6 +21,15 @@
 	<input type="submit" value="AJOUTER PERSONNE">
 </form>
 
+<!-- AJOUT LIEU-->
+<form method="post" action="/building/add">
+	<label>Batiment</label>
+	<input type="text" name="nameBat">
+	<label>Adresse</label>
+	<input type="text" name="Adresse">
+	<input type="submit" value="AJOUTER BATIMENT">
+</form>
+
 <br>
 <h3><u>Liste noeuds type "Person"</u></h3>
 
@@ -37,6 +46,25 @@
 	    	<td><%= person.name %> </td>
 	    	<td><%= person.age %> </td>
 	    	<td><%= person.job %> </td>
+	    </tr>
+<% }); %>
+</table>
+
+
+<br>
+<h3><u>Liste noeuds type "Building"</u></h3>
+
+<table id="table2">
+	  	<tr>
+	  		<th>ID neo4j</th>
+		    <th>Batiment</th>
+		    <th>Adresse</th>
+  		</tr>
+		<% buildings.forEach(function(building) { %>
+		<tr>
+			<td><%= building.id %> </td>
+	    	<td><%= building.name %> </td>
+	    	<td><%= building.adresse %> </td>
 	    </tr>
 <% }); %>
 </table>
