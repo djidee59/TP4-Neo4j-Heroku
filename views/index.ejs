@@ -1,3 +1,5 @@
+<link href="/css/style.css" rel="stylesheet" type="text/css">
+
 <h1>Test de Neo4j sur Heroku !</h1>
 
 <h3><u>Interface gestion basique</u></h3>
@@ -21,8 +23,7 @@
 <br><br>
 <h3><u>Liste noeuds type "Person"</u></h3>
 
-<table>
-<style>border: 1px solid black; /* auront une bordure de 1px */</style>
+<table id="table1">
 		<% persons.forEach(function(person) { %>
 		<tr>
 	    	<td><%= person.name %> </td>
