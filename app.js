@@ -5,7 +5,12 @@ var bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 
 var app = express();
-app.use(express.bodyParser());
+
+// a priori ça ne sert à rien
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // INIT NEO4J
 var neo4j = require('neo4j-driver').v1;
