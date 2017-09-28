@@ -13,7 +13,7 @@ var db = new neo4j.GraphDatabase(process.env['GRAPHENEDB_URL']);
 db.cypher({
     query: 'CREATE (n:Person {name: {personName}}) RETURN n',
     params: {
-        personName: 'Bob'
+        personName: 'Julien'
     }
 }, function(err, results){
     var result = results[0];
