@@ -68,7 +68,7 @@ app.get('/', function(req,res){
 	        console.log(error);
 	});
 
-});
+}});
 
 // AJOUT PERSONNE
 app.post('/person/add',function(req,res){
@@ -123,3 +123,4 @@ app.post('/db/delete',function(req,res){
 // on lance l'écoute
 app.listen(PORT);
 console.log('Server started on Port ' + PORT);
+
