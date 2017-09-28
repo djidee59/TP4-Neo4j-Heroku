@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000;
 
 var app = express();
 
-// NEO4J
+// INIT NEO4J
 var neo4j = require('neo4j-driver').v1;
 var graphenedbURL = process.env.GRAPHENEDB_BOLT_URL;
 var graphenedbUser = process.env.GRAPHENEDB_BOLT_USER;
@@ -35,5 +35,6 @@ app.get('/', function(req,res){
 	res.render('index');
 });
 
+// on lance l'écoute
 app.listen(PORT);
 console.log('Server started on Port ' + PORT);
