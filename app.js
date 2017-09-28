@@ -52,7 +52,7 @@ app.post('/person/add',function(req,res){
 	var age = req.body.age;
 
 	session
-		.run('CREATE(n:Person {name:{nameParam},age:{ageParam})', {nameParam: nom,ageParam:age})
+		.run('CREATE(n:Person {name:{nameParam},age:{ageParam}})', {nameParam: nom, ageParam: age})
 		.then(function(result){
 			res.redirect('/');
 			session.close();
