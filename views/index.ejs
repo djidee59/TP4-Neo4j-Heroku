@@ -3,6 +3,15 @@
 <h3>Interface gestion basique</h3>
 
 <form method="post" action="/db/delete">
-	<label>Supprimer tous les labels et tous les noeuds</label><br>
-	<input type="submit" value="SUPR">
+	<label>Supprimer tous les labels et tous les noeuds</label>
+	<input type="submit" value="SUPPRIMER">
 </form>
+
+<br><br>
+<h3>Liste noeuds type "Person"</h3>
+
+<ul>
+<% persons.forEach(function(person) { %>
+    <li><%= person.name %></li>
+<% }); %>
+</ul>
