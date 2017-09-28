@@ -19,12 +19,13 @@
 	<input type="submit" value="AJOUTER PERSONNE">
 </form>
 
-
+<br>
 <h3><u>Liste noeuds type "Person"</u></h3>
 
 <table id="table1">
 		<% persons.forEach(function(person) { %>
 		<tr>
+			<td><%= person.id %> </td>
 	    	<td><%= person.name %> </td>
 	    	<td><%= person.age %> </td>
 	    </tr>
