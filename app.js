@@ -47,7 +47,7 @@ app.get('/', function(req,res){
 	    		var buildingArr = [];
 	    		result2.records.forEach(function(record){
 					buildingArr.push({
-					//id: record._fields[0].identity.low,
+					id : record.get(0).identity,
 					name: record._fields[0].properties.name,
 					adress: record._fields[0].properties.adress,
 					});
