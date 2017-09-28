@@ -105,7 +105,7 @@ app.get('/pers/del/:id', function(req, res) {
 		});
 
     }
-    res.redirect('/todo');
+    res.redirect('/');
 });
 
 // AJOUT lIEU
