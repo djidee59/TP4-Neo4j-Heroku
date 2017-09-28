@@ -15,28 +15,29 @@ var driver = neo4j.driver(graphenedbURL, neo4j.auth.basic(graphenedbUser, graphe
 // TEST NEO4J
 var session = driver.session();
 
+// dossier views et EJS pour le render
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.get('/', function(req,res){
 
 	session
-    .run('MATCH(n:Person RETURN n')
-    .then(function(result) {
-    	var personArr = [];
-        result.records.forEach(function(record) {
-        	personArr.push({
-        		name: record._fields[0].properties.name,
-        	});
-        });
+	    .run('MATCH(n:Person) RETURN n')
+	    .then(function(result) {
+	    	var personArr = [];
+	        result.records.forEach(function(record) {
+	        	personArr.push({
+	        		name: record._fields[0].properties.name,
+	        	});
+	        });
 
-        res.render('index',{
-        	persons: personArr,
-        });
-    })
-    .catch(function(error) {
-        console.log(error);
-    });
+	        res.render('index',{
+	        	persons: personArr,
+	        });
+	    })
+	    .catch(function(error) {
+	        console.log(error);
+	    });
 
 
 });
