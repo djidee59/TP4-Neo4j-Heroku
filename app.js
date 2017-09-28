@@ -41,13 +41,32 @@ app.get('/', function(req,res){
 	        	});
 	        });
 
-	        res.render('index',{
-	        	persons: personArr,
-	        });
+	    session
+	    	.run('MATCH(n:Building) RETURN n')
+	    	.then(function(result2){
+	    		var buildingArr = [];
+	    		result2.records.forEach(function(record){
+					buildingArr.push({
+					//id: record._fields[0].identity.low,
+					name: record._fields[0].properties.name,
+					adress: record._fields[0].properties.adress,
+				});
+
+	    		// RENDER avec personnes et batiments
+		    	res.render('index',{
+		        	persons: personArr,
+		        	buildings: buildingArr
+		        });
+
+	    	})
+	    	.cath(function(error){
+	    		console.log(error);
+	    	})
+
 	    })
 	    .catch(function(error) {
 	        console.log(error);
-	    });
+	});
 
 });
 
@@ -59,6 +78,23 @@ app.post('/person/add',function(req,res){
 
 	session
 		.run('CREATE(n:Person {name:{nameParam},age:{ageParam}, job:{jobParam}})', {nameParam: nom, ageParam: age, jobParam: job})
+		.then(function(result){
+			res.redirect('/');
+			session.close();
+		})
+		.catch(function(err){
+			console.log(err);
+		});
+
+});
+
+// AJOUT lIEU
+app.post('/building/add',function(req,res){
+	var nom = req.body.nameBat;
+	var adress = req.body.adresse;
+
+	session
+		.run('CREATE(n:Building {name:{nameParam},adress:{adressParam}})', {nameParam: nom, adressParam: adress})
 		.then(function(result){
 			res.redirect('/');
 			session.close();
