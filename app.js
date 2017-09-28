@@ -37,6 +37,7 @@ app.get('/', function(req,res){
 	        		id : record.get(0).identity,
 	        		name: record._fields[0].properties.name,
 	        		age: record._fields[0].properties.age,
+	        		job: record._fields[0].properties.job,
 	        	});
 	        });
 
@@ -54,9 +55,10 @@ app.get('/', function(req,res){
 app.post('/person/add',function(req,res){
 	var nom = req.body.nom;
 	var age = req.body.age;
+	var job = req.body.job;
 
 	session
-		.run('CREATE(n:Person {name:{nameParam},age:{ageParam}})', {nameParam: nom, ageParam: age})
+		.run('CREATE(n:Person {name:{nameParam},age:{ageParam}, job:{jobParam}})', {nameParam: nom, ageParam: age, jobParam: job})
 		.then(function(result){
 			res.redirect('/');
 			session.close();
