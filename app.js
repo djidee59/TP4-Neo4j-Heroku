@@ -92,6 +92,7 @@ app.post('/person/add',function(req,res){
 // SUPPRESSION PERSONNE
 app.get('/pers/del/:id', function(req, res) {
     if (req.params.id != '') {
+    	// il faut convertir le ID dans le format attendu par Neo4j (long integer..)
         var id =  require('neo4j-driver').v1.int(req.params.id);
         console.log("suppression personne: " + id);
 
@@ -106,7 +107,7 @@ app.get('/pers/del/:id', function(req, res) {
 		});
 
     }
-    res.redirect('/');
+
 });
 
 // AJOUT lIEU
