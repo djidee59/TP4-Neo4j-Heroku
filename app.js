@@ -92,11 +92,11 @@ app.post('/person/add',function(req,res){
 // SUPPRESSION PERSONNE
 app.get('/pers/del/:id', function(req, res) {
     if (req.params.id != '') {
-        var id = parseInt(req.params.id,10);
+        var id = req.params.id;
         console.log("suppression personne: " + id);
 
         session
-        .run('MATCH (n) where id(n) = {iddPAram} DETACH DELETE n', {iddPAram: id})
+        .run('MATCH (n) where id(n) = {iddPAram} DETACH DELETE n', {iddPAram: toInteger(id)})
 		.then(function(result){
 			res.redirect('/');
 			session.close();
