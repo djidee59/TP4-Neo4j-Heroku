@@ -96,7 +96,7 @@ app.get('/pers/del/:id', function(req, res) {
         console.log("suppression personne: " + id);
 
         session
-        .run('MATCH (n) where id(n) = 23 DETACH DELETE n', {iddPAram: id})
+        .run('MATCH (n) where id(n) = {iddPAram} DETACH DELETE n', {iddPAram: id})
 		.then(function(result){
 			res.redirect('/');
 			session.close();
