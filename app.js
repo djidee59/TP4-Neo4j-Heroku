@@ -92,7 +92,7 @@ app.post('/person/add',function(req,res){
 // SUPPRESSION PERSONNE
 app.get('/pers/del/:id', function(req, res) {
     if (req.params.id != '') {
-        var id = parseInt(req.params.id,10);
+        var id =  require('neo4j-driver').v1.int(req.params.id);
         console.log("suppression personne: " + id);
 
         session
