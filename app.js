@@ -143,22 +143,7 @@ app.post('/db/delete',function(req,res){
 });
 
 // AJOUT DB PAR EXCEL
-app.post('/excel/personnes',function(req,res){
 
-	session
-		.run(
-			LOAD CSV WITH HEADERS FROM 'file:///import/personnes.csv' AS line
-			CREATE (:Person { name: line[1], age: toInt(line[2]), job: line[3]})
-			)
-		.then(function(result){
-			res.redirect('/');
-			session.close();
-		})
-		.catch(function(err){
-			console.log(err);
-		});
-
-});
 
 // on lance l'écoute
 app.listen(PORT);
