@@ -34,7 +34,7 @@
 <form method="post" action="/lien/ajout">
 	<select id="selector_1">
 	  	<% persons.forEach(function(person) { %>
-			<opion value = "aaa"><%= person.name %> </option>
+			<opion value = '<%= person.name %>'> <%= person.name %> </option>
 		<% }); %>
 	</select>
 	<input type="submit" value="LIER NOEUDS">
