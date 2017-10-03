@@ -30,15 +30,9 @@
 	<input type="submit" value="AJOUTER BATIMENT">
 </form>
 
-<!-- AJOUT LIEN-->
-<form method="post" action="/lien/ajout">
-	<select id="selector_1">
-	  	<% persons.forEach(function(person) { %>
-			<opion value = '<%= person.name %>'> <%= person.name %> </option>
-		<% }); %>
-	</select>
-	<input type="submit" value="LIER NOEUDS">
-</form>
+
+<h3><u>Interface gestion EXCEL</u></h3>
+
 
 <br>
 <h3><u>Liste noeuds type "Person"</u></h3>
