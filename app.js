@@ -4,6 +4,10 @@ var bodyParser = require('body-parser');
 // heroku: on récupère le port sur lequel heroku à ouvert l'app
 const PORT = process.env.PORT || 3000;
 
+// appel à recast
+const recastai = require('recastai');
+const client = new recastai.request('b79c2bc414db3ff6d39c7a38b9e4f9a9', 'fr');
+
 var app = express();
 
 // Body parser pour récupérer facilemnt les élements du DOM

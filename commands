@@ -1,0 +1,3 @@
+LOAD CSV WITH HEADERS FROM 'https://s3.eu-central-1.amazonaws.com/testneo4j/persons.csv' AS line
+CREATE (:Person { name: line.Nom, age: toInteger( line.Age)})
+
